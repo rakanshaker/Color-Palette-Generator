@@ -1,0 +1,58 @@
+body{
+    text-align: center;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    
+}
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+#base-color{
+    margin: 20px
+}
+
+#base-box{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:50px;
+    height:50px;
+    padding:20px;
+    background-color:red
+}
+
+#box-1{
+    margin: auto;
+    width:50px;
+    height:50px;
+    padding:20px;
+    background-color:blue;
+}
+#box-2{
+    margin: auto;
+    width:50px;
+    height:50px;
+    padding:20px;
+    background-color:red;
+}
+#box-3{
+    margin: auto;
+    width:50px;
+    height:50px;
+    padding:20px;
+    background-color: orange
+}
+
+.palette{
+    display: inline-block;
+}
+
+#palette-outer{
+    text-align: center;
+}
+
