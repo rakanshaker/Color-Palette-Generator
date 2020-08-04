@@ -1,100 +1,124 @@
-//-----------Variables-----------//
-// const base_color_input = document.getElementById("base-color-input")
-// const base_color_display = document.getElementById("base-box")
-// const palette_1 = document.getElementById("box-1")
-// const palette_2 = document.getElementById("box-2")
-// const palette_3 = document.getElementById("box-3")
-// const random_button = document.getElementById("random-button")
-// const submit_button = document.getElementById("submit-base-color")
-// const form = document.getElementById("base-color-form")
-// const style_label = document.getElementById("style_label")
 
-let style = "primary"
-
-//-------------EVENT LISTENERS----------//
 class View{
-    constructor(form, random_button){
-        this.form = form;
+    constructor(body, random_button, style_btn){
+        this.body = body;
         this.random_button = random_button;
+        this.style_btn = style_btn
     }
     on_submit(cb){
-        this.form.onsubmit = cb;
+        this.body.onkeypress = cb;
     }
     random_click(cb){
         this.random_button.onclick = cb;
     }
+    style_click(cb){
+        this.style_btn.onclick = cb;
+    }
 }
 
-// form.onsubmit = submit;
-// random_button.onclick = submit_random;
-
-//-----------FUNCTIONS--------------//
 class Palette{
-    constructor(base_color_input, base_color_display, palette_1, palette_2, palette_3, random_button, submit_button, form, style_label, submission, random_sub){
+    constructor(palette_1_input, palette_1, palette_2_input, palette_2, palette_3_input, palette_3, palette_4_input, palette_4, palette_5_input, palette_5, submission){
 
-        this.base_color_input = base_color_input;
-        this.base_color_display = base_color_display;
+        this.palette_1_input = palette_1_input;
         this.palette_1 = palette_1;
+        this.palette_2_input = palette_2_input;
         this.palette_2 = palette_2;
+        this.palette_3_input = palette_3_input;
         this.palette_3 = palette_3;
-        this.random_button = random_button;
-        this.submit_button = submit_button;
-        this.form = form;
-        this.style_label = style_label;
+        this.palette_4_input = palette_4_input
+        this.palette_4 = palette_4;
+        this.palette_5_input = palette_5_input
+        this.palette_5 = palette_5;
         this.submission = submission;
         this.submission.on_submit(this.submit.bind(this))
-        this.random_sub = random_sub
-        this.random_sub.random_click(this.submit_random.bind(this))
 
     }
 
     submit(event){
-        
-        const color_submission = new Color(`${this.base_color_input.value}`).colorCode;
-        console.log('hello')
-        this.base_color_display.style.backgroundColor = color_submission;
-       event.preventDefault();
-        this.update_palette();
+        if (event.keyCode == 32){
+            let hex = Color.randomColor().colorCode;
+            this.palette_1.style.backgroundColor = hex;
+            this.palette_1_input.value = hex;
+
+            hex = Color.randomColor().colorCode;
+            this.palette_2.style.backgroundColor = hex;
+            this.palette_2_input.value = hex;
+
+            hex = Color.randomColor().colorCode;
+            this.palette_3.style.backgroundColor = hex;
+            this.palette_3_input.value = hex;
+
+            hex = Color.randomColor().colorCode;
+            this.palette_4.style.backgroundColor = hex;
+            this.palette_4_input.value = hex;
+
+            hex = Color.randomColor().colorCode;
+            this.palette_5.style.backgroundColor = hex;
+            this.palette_5_input.value = hex;
+
+        }
     }
     
-    update_palette(){
-        this.palette_1.style.backgroundColor = new Color(`${this.base_color_input.value}`).inverse_hex(`${this.base_color_input.value}`);
-        this.palette_2.style.backgroundColor = new Color(`${this.base_color_input.value}`).getCompliment(this.colorCode)
-        this.palette_3.style.backgroundColor = new Color(`${this.base_color_input.value}`).altCompliment(this.colorCode)
-    }
+    // update_palette(){
+    //     this.palette_2.style.backgroundColor = new Color(`${this.base_color_input.value}`).inverse_hex(`${this.base_color_input.value}`);
+    //     this.palette_3.style.backgroundColor = new Color(`${this.base_color_input.value}`).getCompliment(this.colorCode)
+    //     this.palette_4.style.backgroundColor = new Color(`${this.base_color_input.value}`).altCompliment(this.colorCode)
+    // }
     
-    submit_random(event){
-        const randomColor = Color.randomColor();
-        //randomColor is an instance of Color
-        //we should be able to call randomColor.getCompliment() to get inverse hex value
-        this.base_color_display.style.backgroundColor = randomColor.colorCode;
-        this.base_color_input.value = randomColor.colorCode
-        // console.log(base_color_display.style.backgroundColor);
-        event.preventDefault();
-    }
+    // submit_random(event){
+    //     const randomColor = Color.randomColor();
+    //     //randomColor is an instance of Color
+    //     //we should be able to call randomColor.getCompliment() to get inverse hex value
+    //     this.base_color_display.style.backgroundColor = randomColor.colorCode;
+    //     this.palette_1.style.backgroundColor = randomColor.colorCode;
+    //     this.palette_2.style.backgroundColor = randomColor.colorCode;
+    //     this.palette_3.style.backgroundColor = randomColor.colorCode;
+    //     // this.base_color_input.value = randomColor.colorCode
+    //     // console.log(base_color_display.style.backgroundColor);
+    //     event.preventDefault();
+    // }
     
 
 }
 
+class Style{
+    constructor(style){
+        this.style = style;
+    }
+
+}
 
 
 let create = new Palette(
-    document.getElementById("base-color-input"), 
-    document.getElementById("base-box"), 
+    document.getElementById("box-1-hex"), 
     document.getElementById("box-1"), 
+    document.getElementById("box-2-hex"),
     document.getElementById("box-2"),
+    document.getElementById("box-3-hex"), 
     document.getElementById("box-3"),
-    document.getElementById("random-button"),
-    document.getElementById("submit-base-color"),
-    document.getElementById("base-color-form"),
-    document.getElementById("style_label"),
-    new View (document.getElementById("base-color-form"), document.getElementById("random-button")),
-    new View (document.getElementById("base-color-form"), document.getElementById("random-button")),
+    document.getElementById("box-4-hex"),
+    document.getElementById("box-4"),
+    document.getElementById("box-5-hex"),
+    document.getElementById("box-5"),
+    new View (document.body, document.getElementById("random-button")),
+    new View (document.body, document.getElementById("random-button")),
 
 );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//-------OLD FUNCTIONS-------//
 
 // function submit(event){
 //     //console.log(base_color_input.value)
@@ -121,14 +145,28 @@ let create = new Palette(
 // }
 
 
+// submit(event){
+//     if (event.keyCode == 32){
+//     const color_submission = new Color(`${this.base_color_input.value}`).colorCode;
+//     console.log('hello')
+//     this.base_color_display.style.backgroundColor = color_submission;
+//    event.preventDefault();
+//     this.update_palette();
+//     }
+// }
 
-/****
- * TODO
- * try organizing OOP 
- * class based
- * Make this into Controller
- * 
- * palette js is controller, html = view, model
- * 
- * try copying controller from tic tac toe and reusing it for this case
- */
+// update_palette(){
+//     this.palette_1.style.backgroundColor = new Color(`${this.base_color_input.value}`).inverse_hex(`${this.base_color_input.value}`);
+//     this.palette_2.style.backgroundColor = new Color(`${this.base_color_input.value}`).getCompliment(this.colorCode)
+//     this.palette_3.style.backgroundColor = new Color(`${this.base_color_input.value}`).altCompliment(this.colorCode)
+// }
+
+// submit_random(event){
+//     const randomColor = Color.randomColor();
+//     //randomColor is an instance of Color
+//     //we should be able to call randomColor.getCompliment() to get inverse hex value
+//     this.base_color_display.style.backgroundColor = randomColor.colorCode;
+//     this.base_color_input.value = randomColor.colorCode
+//     // console.log(base_color_display.style.backgroundColor);
+//     event.preventDefault();
+// }

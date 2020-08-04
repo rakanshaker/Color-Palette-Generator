@@ -1,9 +1,15 @@
+@font-face{
+    font-family: 'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
+
+}
+
 body{
-    text-align: center;
+    text-align: left;
 }
 
 h1{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: 'Roboto', sans-serif; 
     
 }
 
@@ -12,47 +18,113 @@ p{
     
 }
 
-#base-color{
-    margin: 20px
-}
-
-#base-box{
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width:50px;
-    height:50px;
-    padding:20px;
-    background-color:red
-}
-
-#box-1{
-    margin: auto;
-    width:50px;
-    height:50px;
-    padding:20px;
-    background-color:blue;
-}
-#box-2{
-    margin: auto;
-    width:50px;
-    height:50px;
-    padding:20px;
-    background-color:red;
-}
-#box-3{
-    margin: auto;
-    width:50px;
-    height:50px;
-    padding:20px;
-    background-color: orange
-}
-
 .palette{
     display: inline-block;
 }
 
 #palette-outer{
+    height: 90%;
+    display: flex;
+}
+#box-1{
+    width:20%;
+    height:100%;
+    background-color: #fde38d;
     text-align: center;
 }
+#box-1-hex-container{
+    text-align: center;
+    height: 5%;
+    position: relative;
+    vertical-align: bottom;
+}
+#box-1-hex{
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-size: large;
+}
 
+#box-2{
+    margin: auto;
+    width:20%;
+    height:100%;
+    background-color:#e59473;
+}
+#box-2-hex-container{
+    text-align: center;
+    height: 5%;
+    bottom: 0;
+    position: absolute;
+}
+#box-2-hex{
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-size: large;
+}
+
+#box-3{
+    margin: auto;
+    width:20%;
+    height:100%;
+    background-color:#dcb798;
+}
+
+#box-3-hex-container{
+    text-align: center;
+    height: 5%;
+    bottom: 0;
+    position: absolute;
+}
+#box-3-hex{
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-size: large;
+}
+
+#box-4{
+    margin: auto;
+    width:20%;
+    height:100%;
+    background-color: #ae7446;
+}
+
+#box-4-hex-container{
+    text-align: center;
+    height: 5%;
+    bottom: 0;
+    position: absolute;
+}
+#box-4-hex{
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-size: large;
+}
+#box-5{
+    text-align: center;
+    margin: auto;
+    width:20%;
+    height:100%;
+    background-color: #e3cef9;
+}
+
+#box-5-hex-container{
+    text-align: center;
+    height: 5%;
+    bottom: 0;
+    position: absolute;
+}
+#box-5-hex{
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-size: large;
+}
+
+
+.fas-fa-unlock{
+
+}

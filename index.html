@@ -4,28 +4,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Palette Generator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://kit.fontawesome.com/49a39fcc1a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="base-color">
         <h1>Color Palette Generator</h1>
-        <p>Choose a Base Color</p>
-        <form id="base-color-form">
-            <input type="text" id="base-color-input" placeholder="Base Hex # Here"><br>
-            <button type="submit">Submit</button><br>
+        <p>Press the spacebar to generate color palettes!</p>
+        <!-- <form id="base-color-form"> -->
+            <div></div>
+            
         <!-- <button id="submit-base-color">Submit</button> -->
-        <div id="base-box"></div>
         
-        <button id="random-button">Random</button> 
-    </div>
+        <div id="palette-outer">
+            <div id="box-1" class="palette">
+                <div></div>
+                <div><i class="fas fa-unlock"></i></div>
+                <div id="box-1-hex-container"><input id="box-1-hex" placeholder=""></input></div>
+            </div>
+            <div id="box-2" class="palette">
+                <div></div>
+                <div></div>
+                <div id="box-2-hex-container"><input id="box-2-hex" placeholder=""></input></div>
+            </div>
+            <div id="box-3" class="palette">
+                <div></div>
+                <div></div>
+                <div id="box-3-hex-container"><input id="box-3-hex" placeholder=""></input></div>
+            </div>
+            <div id="box-4" class="palette">
+                <div></div>
+                <div></div>
+                <div id="box-4-hex-container"><input id="box-4-hex" placeholder=""></input></div>
+            </div>
+            <div id="box-5" class="palette">
+                <div></div>
+                <div></div>
+                <div id="box-5-hex-container"><input id="box-5-hex" placeholder=""></input></div>
+            </div>
+        </div>
    
-    <div id="palette-outer">
-        <div id="box-1" class="palette"></div>
-        <div id="box-2" class="palette"></div>
-        <div id="box-3" class="palette"></div>
-    </div>
-
-    <p id="style_label">Primary</p>
-    <button id="style-button">Style</button>
     <script type="text/javascript" src="util.js"></script>
     <script type="text/javascript" src="COLOR.js"></script>
     <script type="text/javascript" src="palette.js"></script>
