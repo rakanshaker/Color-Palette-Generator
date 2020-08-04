@@ -4,127 +4,48 @@
 
 }
 
-body{
-    text-align: left;
+body {
+    padding: 50px;
 }
 
-h1{
+h1 {
     font-family: 'Roboto', sans-serif; 
     
 }
 
-p{
+p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
 }
 
-.palette{
-    display: inline-block;
+/*Box styles*/
+
+.box-container {
+    display: flex;
+    height: 400px;
 }
 
-#palette-outer{
-    height: 90%;
-    display: flex;
-}
-#box-1{
-    width:20%;
-    height:100%;
+.box {
     background-color: #fde38d;
+    display: inline-block;
+    height:100%;
+    padding: 25px;
     text-align: center;
+    width:20%;
 }
-#box-1-hex-container{
-    text-align: center;
+
+.box-hex {
     height: 5%;
     position: relative;
+    text-align: center;
     vertical-align: bottom;
 }
-#box-1-hex{
-    text-align: center;
+
+.box-hex-input {
     background: transparent;
     border: none;
     font-size: large;
+    text-align: center;
 }
 
-#box-2{
-    margin: auto;
-    width:20%;
-    height:100%;
-    background-color:#e59473;
-}
-#box-2-hex-container{
-    text-align: center;
-    height: 5%;
-    bottom: 0;
-    position: absolute;
-}
-#box-2-hex{
-    text-align: center;
-    background: transparent;
-    border: none;
-    font-size: large;
-}
-
-#box-3{
-    margin: auto;
-    width:20%;
-    height:100%;
-    background-color:#dcb798;
-}
-
-#box-3-hex-container{
-    text-align: center;
-    height: 5%;
-    bottom: 0;
-    position: absolute;
-}
-#box-3-hex{
-    text-align: center;
-    background: transparent;
-    border: none;
-    font-size: large;
-}
-
-#box-4{
-    margin: auto;
-    width:20%;
-    height:100%;
-    background-color: #ae7446;
-}
-
-#box-4-hex-container{
-    text-align: center;
-    height: 5%;
-    bottom: 0;
-    position: absolute;
-}
-#box-4-hex{
-    text-align: center;
-    background: transparent;
-    border: none;
-    font-size: large;
-}
-#box-5{
-    text-align: center;
-    margin: auto;
-    width:20%;
-    height:100%;
-    background-color: #e3cef9;
-}
-
-#box-5-hex-container{
-    text-align: center;
-    height: 5%;
-    bottom: 0;
-    position: absolute;
-}
-#box-5-hex{
-    text-align: center;
-    background: transparent;
-    border: none;
-    font-size: large;
-}
-
-
-.fas-fa-unlock{
-
-}
+/*End box styles*/

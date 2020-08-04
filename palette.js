@@ -1,4 +1,3 @@
-
 class View{
     constructor(body, random_button, style_btn){
         this.body = body;
