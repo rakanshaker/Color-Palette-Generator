@@ -21,31 +21,39 @@ p {
 /*Box styles*/
 
 .box-container {
+    border-radius: 5px;
+    flex-direction: row;
     display: flex;
     height: 400px;
+    overflow:hidden;
 }
 
 .box {
+    justify-content: flex-end;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     background-color: #fde38d;
-    display: inline-block;
-    height:100%;
     padding: 25px;
     text-align: center;
-    width:20%;
-}
-
-.box-hex {
-    height: 5%;
-    position: relative;
-    text-align: center;
-    vertical-align: bottom;
 }
 
 .box-hex-input {
     background: transparent;
     border: none;
-    font-size: large;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 5px;
     text-align: center;
+    width: 100%;
+}
+
+.box-hex-input:focus,
+.box-hex-input:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-style: none;
+    outline: none;
 }
 
 /*End box styles*/
