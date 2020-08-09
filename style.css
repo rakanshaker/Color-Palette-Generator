@@ -1,59 +1,77 @@
-@font-face{
-    font-family: 'Roboto', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
-
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 }
 
 body {
-    padding: 50px;
+  padding: 50px;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif; 
-    
+  font-family: "Roboto", sans-serif;
 }
 
 p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*Box styles*/
 
 .box-container {
-    border-radius: 5px;
-    flex-direction: row;
-    display: flex;
-    height: 400px;
-    overflow:hidden;
+  border-radius: 5px;
+  flex-direction: row;
+  display: flex;
+  height: 400px;
+  overflow: hidden;
 }
 
 .box {
-    justify-content: flex-end;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    background-color: #fde38d;
-    padding: 25px;
-    text-align: center;
+  justify-content: flex-end;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: #fde38d;
+  padding: 25px;
+  text-align: center;
 }
 
 .box-hex-input {
-    background: transparent;
-    border: none;
-    border-radius: 3px;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 5px;
-    text-align: center;
-    width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
 }
 
 .box-hex-input:focus,
 .box-hex-input:hover {
-    background: rgba(255, 255, 255, 0.5);
-    border-style: none;
-    outline: none;
+  background: rgba(255, 255, 255, 0.5);
+  border-style: none;
+  outline: none;
 }
 
-/*End box styles*/
+.fa-unlock {
+  padding: 5px;
+}
+.fa-unlock:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.fa-copy {
+  padding: 5px;
+}
+
+.fa-copy:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.fa-arrow-right {
+  padding: 5px;
+}
+
+.fa-arrow-right:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
