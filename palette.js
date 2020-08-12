@@ -1,121 +1,119 @@
-class View{
-    constructor(body, random_button, style_btn){
-        this.body = body;
-        this.random_button = random_button;
-        this.style_btn = style_btn
+class View {
+  constructor(body, random_button, style_btn) {
+    this.body = body;
+    this.random_button = random_button;
+    this.style_btn = style_btn;
+  }
+
+  on_submit(cb) {
+    this.body.onkeypress = cb;
+  }
+  random_click(cb) {
+    this.random_button.onclick = cb;
+  }
+  style_click(cb) {
+    this.style_btn.onclick = cb;
+  }
+}
+//palette accepting an array of key value pairs?
+class Palette {
+  constructor(
+    palette_1_input,
+    palette_1,
+    palette_2_input,
+    palette_2,
+    palette_3_input,
+    palette_3,
+    palette_4_input,
+    palette_4,
+    palette_5_input,
+    palette_5,
+    submission
+  ) {
+    this.palette_1_input = palette_1_input;
+    this.palette_1 = palette_1;
+    this.palette_2_input = palette_2_input;
+    this.palette_2 = palette_2;
+    this.palette_3_input = palette_3_input;
+    this.palette_3 = palette_3;
+    this.palette_4_input = palette_4_input;
+    this.palette_4 = palette_4;
+    this.palette_5_input = palette_5_input;
+    this.palette_5 = palette_5;
+    this.submission = submission;
+    this.submission.on_submit(this.submit.bind(this));
+  }
+
+  //if the constructor accepted arrays, this could run through an array
+  submit(event) {
+    if (event.keyCode == 32) {
+      let myColor = Color.randomColor();
+      let hex = myColor.colorCode;
+      this.palette_1.style.backgroundColor = hex;
+      this.palette_1_input.value = hex;
+      console.log(hex, myColor.isDark());
+
+      hex = Color.randomColor().colorCode;
+      this.palette_2.style.backgroundColor = hex;
+      this.palette_2_input.value = hex;
+
+      hex = Color.randomColor().colorCode;
+      this.palette_3.style.backgroundColor = hex;
+      this.palette_3_input.value = hex;
+
+      hex = Color.randomColor().colorCode;
+      this.palette_4.style.backgroundColor = hex;
+      this.palette_4_input.value = hex;
+
+      hex = Color.randomColor().colorCode;
+      this.palette_5.style.backgroundColor = hex;
+      this.palette_5_input.value = hex;
     }
-    on_submit(cb){
-        this.body.onkeypress = cb;
-    }
-    random_click(cb){
-        this.random_button.onclick = cb;
-    }
-    style_click(cb){
-        this.style_btn.onclick = cb;
-    }
+  }
+
+  // update_palette(){
+  //     this.palette_2.style.backgroundColor = new Color(`${this.base_color_input.value}`).inverse_hex(`${this.base_color_input.value}`);
+  //     this.palette_3.style.backgroundColor = new Color(`${this.base_color_input.value}`).getCompliment(this.colorCode)
+  //     this.palette_4.style.backgroundColor = new Color(`${this.base_color_input.value}`).altCompliment(this.colorCode)
+  // }
+
+  // submit_random(event){
+  //     const randomColor = Color.randomColor();
+  //     //randomColor is an instance of Color
+  //     //we should be able to call randomColor.getCompliment() to get inverse hex value
+  //     this.base_color_display.style.backgroundColor = randomColor.colorCode;
+  //     this.palette_1.style.backgroundColor = randomColor.colorCode;
+  //     this.palette_2.style.backgroundColor = randomColor.colorCode;
+  //     this.palette_3.style.backgroundColor = randomColor.colorCode;
+  //     // this.base_color_input.value = randomColor.colorCode
+  //     // console.log(base_color_display.style.backgroundColor);
+  //     event.preventDefault();
+  // }
 }
 
-class Palette{
-    constructor(palette_1_input, palette_1, palette_2_input, palette_2, palette_3_input, palette_3, palette_4_input, palette_4, palette_5_input, palette_5, submission){
-
-        this.palette_1_input = palette_1_input;
-        this.palette_1 = palette_1;
-        this.palette_2_input = palette_2_input;
-        this.palette_2 = palette_2;
-        this.palette_3_input = palette_3_input;
-        this.palette_3 = palette_3;
-        this.palette_4_input = palette_4_input
-        this.palette_4 = palette_4;
-        this.palette_5_input = palette_5_input
-        this.palette_5 = palette_5;
-        this.submission = submission;
-        this.submission.on_submit(this.submit.bind(this))
-
-    }
-
-    submit(event){
-        if (event.keyCode == 32){
-            let hex = Color.randomColor().colorCode;
-            this.palette_1.style.backgroundColor = hex;
-            this.palette_1_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_2.style.backgroundColor = hex;
-            this.palette_2_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_3.style.backgroundColor = hex;
-            this.palette_3_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_4.style.backgroundColor = hex;
-            this.palette_4_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_5.style.backgroundColor = hex;
-            this.palette_5_input.value = hex;
-
-        }
-    }
-    
-    // update_palette(){
-    //     this.palette_2.style.backgroundColor = new Color(`${this.base_color_input.value}`).inverse_hex(`${this.base_color_input.value}`);
-    //     this.palette_3.style.backgroundColor = new Color(`${this.base_color_input.value}`).getCompliment(this.colorCode)
-    //     this.palette_4.style.backgroundColor = new Color(`${this.base_color_input.value}`).altCompliment(this.colorCode)
-    // }
-    
-    // submit_random(event){
-    //     const randomColor = Color.randomColor();
-    //     //randomColor is an instance of Color
-    //     //we should be able to call randomColor.getCompliment() to get inverse hex value
-    //     this.base_color_display.style.backgroundColor = randomColor.colorCode;
-    //     this.palette_1.style.backgroundColor = randomColor.colorCode;
-    //     this.palette_2.style.backgroundColor = randomColor.colorCode;
-    //     this.palette_3.style.backgroundColor = randomColor.colorCode;
-    //     // this.base_color_input.value = randomColor.colorCode
-    //     // console.log(base_color_display.style.backgroundColor);
-    //     event.preventDefault();
-    // }
-    
-
+class Style {
+  constructor(style) {
+    this.style = style;
+  }
 }
 
-class Style{
-    constructor(style){
-        this.style = style;
-    }
-
-}
-
-
+//possibly move to in main.js
 let create = new Palette(
-    document.getElementById("box-1-hex"), 
-    document.getElementById("box-1"), 
-    document.getElementById("box-2-hex"),
-    document.getElementById("box-2"),
-    document.getElementById("box-3-hex"), 
-    document.getElementById("box-3"),
-    document.getElementById("box-4-hex"),
-    document.getElementById("box-4"),
-    document.getElementById("box-5-hex"),
-    document.getElementById("box-5"),
-    new View (document.body, document.getElementById("random-button")),
-    new View (document.body, document.getElementById("random-button")),
-
+  document.getElementById("box-1-hex"),
+  document.getElementById("box-1"),
+  document.getElementById("box-2-hex"),
+  document.getElementById("box-2"),
+  document.getElementById("box-3-hex"),
+  document.getElementById("box-3"),
+  document.getElementById("box-4-hex"),
+  document.getElementById("box-4"),
+  document.getElementById("box-5-hex"),
+  document.getElementById("box-5"),
+  new View(document.body, document.getElementById("random-button"))
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
+// //initiate with something like this:
+// let init = new Palette([document.getElementById("box-1-hex")]);
 
 //-------OLD FUNCTIONS-------//
 
@@ -142,7 +140,6 @@ let create = new Palette(
 //     // console.log(base_color_display.style.backgroundColor);
 //     event.preventDefault();
 // }
-
 
 // submit(event){
 //     if (event.keyCode == 32){
