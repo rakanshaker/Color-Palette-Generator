@@ -1,109 +1,104 @@
-class View{
-    constructor(body){
-        this.body = body;
-    }
-    on_submit(cb){
-        this.body.onkeypress = cb;
-    }
-    on_load(cb){
-        this.body.onload = cb
-        console.log("loaded")
-    }
+class View {
+  constructor(body) {
+    this.body = body;
+  }
+  on_submit(cb) {
+    this.body.onkeypress = cb;
+  }
+  on_load(cb) {
+    this.body.onload = cb;
+    console.log("loaded");
+  }
 }
 
-class Palette{
-    constructor(palette_1_input, palette_1, palette_2_input, palette_2, palette_3_input, palette_3, palette_4_input, palette_4, palette_5_input, palette_5, submission){
+class Palette {
+  constructor(
+    palette_1_input,
+    palette_1,
+    palette_2_input,
+    palette_2,
+    palette_3_input,
+    palette_3,
+    palette_4_input,
+    palette_4,
+    palette_5_input,
+    palette_5,
+    submission
+  ) {
+    this.palette_1_input = palette_1_input;
+    this.palette_1 = palette_1;
+    this.palette_2_input = palette_2_input;
+    this.palette_2 = palette_2;
+    this.palette_3_input = palette_3_input;
+    this.palette_3 = palette_3;
+    this.palette_4_input = palette_4_input;
+    this.palette_4 = palette_4;
+    this.palette_5_input = palette_5_input;
+    this.palette_5 = palette_5;
+    this.submission = submission;
+    this.submission.on_submit(this.submit.bind(this));
+    this.submission.on_load(this.load.bind(this));
+  }
 
-        this.palette_1_input = palette_1_input;
-        this.palette_1 = palette_1;
-        this.palette_2_input = palette_2_input;
-        this.palette_2 = palette_2;
-        this.palette_3_input = palette_3_input;
-        this.palette_3 = palette_3;
-        this.palette_4_input = palette_4_input
-        this.palette_4 = palette_4;
-        this.palette_5_input = palette_5_input
-        this.palette_5 = palette_5;
-        this.submission = submission;
-        this.submission.on_submit(this.submit.bind(this));
-        this.submission.on_load(this.load.bind(this));
+  submit(event) {
+    if (event.keyCode == 32) {
+      let hex = Color.randomColor().colorCode;
+      this.palette_1.style.backgroundColor = hex;
+      this.palette_1_input.value = hex;
 
+      hex = Color.randomColor().colorCode;
+      this.palette_2.style.backgroundColor = hex;
+      this.palette_2_input.value = hex;
+
+      hex = Color.randomColor().colorCode;
+      this.palette_3.style.backgroundColor = hex;
+      this.palette_3_input.value = hex;
+
+      hex = Color.randomColor().colorCode;
+      this.palette_4.style.backgroundColor = hex;
+      this.palette_4_input.value = hex;
+
+      hex = Color.randomColor().colorCode;
+      this.palette_5.style.backgroundColor = hex;
+      this.palette_5_input.value = hex;
     }
-    
-    submit(event){
-        if (event.keyCode == 32){
-            let hex = Color.randomColor().colorCode;
-            this.palette_1.style.backgroundColor = hex;
-            this.palette_1_input.value = hex;
+  }
 
-            hex = Color.randomColor().colorCode;
-            this.palette_2.style.backgroundColor = hex;
-            this.palette_2_input.value = hex;
+  load() {
+    let hex = Color.randomColor().colorCode;
+    this.palette_1.style.backgroundColor = hex;
+    this.palette_1_input.value = hex;
 
-            hex = Color.randomColor().colorCode;
-            this.palette_3.style.backgroundColor = hex;
-            this.palette_3_input.value = hex;
+    hex = Color.randomColor().colorCode;
+    this.palette_2.style.backgroundColor = hex;
+    this.palette_2_input.value = hex;
 
-            hex = Color.randomColor().colorCode;
-            this.palette_4.style.backgroundColor = hex;
-            this.palette_4_input.value = hex;
+    hex = Color.randomColor().colorCode;
+    this.palette_3.style.backgroundColor = hex;
+    this.palette_3_input.value = hex;
 
-            hex = Color.randomColor().colorCode;
-            this.palette_5.style.backgroundColor = hex;
-            this.palette_5_input.value = hex;
-
-        }
-    }
-
-    load(){
-            let hex = Color.randomColor().colorCode;
-            this.palette_1.style.backgroundColor = hex;
-            this.palette_1_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_2.style.backgroundColor = hex;
-            this.palette_2_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_3.style.backgroundColor = hex;
-            this.palette_3_input.value = hex;
-
-            hex = Color.randomColor().colorCode;
-            this.palette_4.style.backgroundColor = hex;
-            this.palette_4_input.value = hex;
-            hex = Color.randomColor().colorCode;
-            this.palette_5.style.backgroundColor = hex;
-            this.palette_5_input.value = hex;
-
-        }
-    }
+    hex = Color.randomColor().colorCode;
+    this.palette_4.style.backgroundColor = hex;
+    this.palette_4_input.value = hex;
+    hex = Color.randomColor().colorCode;
+    this.palette_5.style.backgroundColor = hex;
+    this.palette_5_input.value = hex;
+  }
+}
 
 let create = new Palette(
-    document.getElementById("box-1-hex"), 
-    document.getElementById("box-1"), 
-    document.getElementById("box-2-hex"),
-    document.getElementById("box-2"),
-    document.getElementById("box-3-hex"), 
-    document.getElementById("box-3"),
-    document.getElementById("box-4-hex"),
-    document.getElementById("box-4"),
-    document.getElementById("box-5-hex"),
-    document.getElementById("box-5"),
-    new View (document.body)
+  document.getElementById("box-1-hex"),
+  document.getElementById("box-1"),
+  document.getElementById("box-2-hex"),
+  document.getElementById("box-2"),
+  document.getElementById("box-3-hex"),
+  document.getElementById("box-3"),
+  document.getElementById("box-4-hex"),
+  document.getElementById("box-4"),
+  document.getElementById("box-5-hex"),
+  document.getElementById("box-5"),
+  new View(document.body)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //-------OLD FUNCTIONS-------//
 
@@ -130,7 +125,6 @@ let create = new Palette(
 //     // console.log(base_color_display.style.backgroundColor);
 //     event.preventDefault();
 // }
-
 
 // submit(event){
 //     if (event.keyCode == 32){
