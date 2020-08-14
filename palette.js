@@ -2,7 +2,7 @@ class View {
   constructor(body) {
     this.body = body;
   }
-  on_submit(cb) {
+  onSubmit(cb) {
     this.body.onkeypress = cb;
   }
   on_load(cb) {
