@@ -11,7 +11,7 @@ class View {
   }
 }
 
-class Palette {
+class PaletteController {
   constructor(
     paletteOneInput,
     paletteOne,
@@ -86,7 +86,7 @@ class Palette {
   }
 }
 
-let create = new Palette(
+let create = new PaletteController(
   document.getElementById("box-1-hex"),
   document.getElementById("box-1"),
   document.getElementById("box-2-hex"),
