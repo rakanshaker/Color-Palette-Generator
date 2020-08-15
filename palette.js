@@ -11,30 +11,16 @@ class View {
   }
 }
 
+class PaletteObject {
+  constructor(input, container) {
+    this.input = input;
+    this.container = container;
+  }
+}
+
 class PaletteController {
-  constructor(
-    paletteOneInput,
-    paletteOne,
-    paletteTwoInput,
-    paletteTwo,
-    paletteThreeInput,
-    paletteThree,
-    paletteFourInput,
-    paletteFour,
-    paletteFiveInput,
-    paletteFive,
-    submission
-  ) {
-    this.paletteOneInput = paletteOneInput;
-    this.paletteOne = paletteOne;
-    this.paletteTwoInput = paletteTwoInput;
-    this.paletteTwo = paletteTwo;
-    this.paletteThreeInput = paletteThreeInput;
-    this.paletteThree = paletteThree;
-    this.paletteFourInput = paletteFourInput;
-    this.paletteFour = paletteFour;
-    this.paletteFiveInput = paletteFiveInput;
-    this.paletteFive = paletteFive;
+  constructor(paletteObjectArr, submission) {
+    this.paletteObjectArr = paletteObjectArr;
     this.submission = submission;
     this.submission.onSubmit(this.submit.bind(this));
     this.submission.onLoad(this.load.bind(this));
@@ -42,60 +28,47 @@ class PaletteController {
 
   submit(event) {
     if (event.keyCode == 32) {
-      let hex = Color.randomColor().colorCode;
-      this.paletteOne.style.backgroundColor = hex;
-      this.paletteOneInput.value = hex;
-
-      hex = Color.randomColor().colorCode;
-      this.paletteTwo.style.backgroundColor = hex;
-      this.paletteTwoInput.value = hex;
-
-      hex = Color.randomColor().colorCode;
-      this.paletteThree.style.backgroundColor = hex;
-      this.paletteThreeInput.value = hex;
-
-      hex = Color.randomColor().colorCode;
-      this.paletteFour.style.backgroundColor = hex;
-      this.paletteFourInput.value = hex;
-
-      hex = Color.randomColor().colorCode;
-      this.paletteFive.style.backgroundColor = hex;
-      this.paletteFiveInput.value = hex;
+      for (let i in this.paletteObjectArr) {
+        let hex = Color.randomColor().colorCode;
+        const arrItem = this.paletteObjectArr[i];
+        arrItem.input.value = hex;
+        arrItem.container.style.backgroundColor = hex;
+      }
     }
   }
 
   load() {
-    let hex = Color.randomColor().colorCode;
-    this.paletteOne.style.backgroundColor = hex;
-    this.paletteOneInput.value = hex;
-
-    hex = Color.randomColor().colorCode;
-    this.paletteTwo.style.backgroundColor = hex;
-    this.paletteTwoInput.value = hex;
-
-    hex = Color.randomColor().colorCode;
-    this.paletteThree.style.backgroundColor = hex;
-    this.paletteThreeInput.value = hex;
-
-    hex = Color.randomColor().colorCode;
-    this.paletteFour.style.backgroundColor = hex;
-    this.paletteFourInput.value = hex;
-    hex = Color.randomColor().colorCode;
-    this.paletteFive.style.backgroundColor = hex;
-    this.paletteFiveInput.value = hex;
+    for (let i in this.paletteObjectArr) {
+      let hex = Color.randomColor().colorCode;
+      const arrItem = this.paletteObjectArr[i];
+      arrItem.input.value = hex;
+      arrItem.container.style.backgroundColor = hex;
+    }
   }
 }
 
 let create = new PaletteController(
-  document.getElementById("box-1-hex"),
-  document.getElementById("box-1"),
-  document.getElementById("box-2-hex"),
-  document.getElementById("box-2"),
-  document.getElementById("box-3-hex"),
-  document.getElementById("box-3"),
-  document.getElementById("box-4-hex"),
-  document.getElementById("box-4"),
-  document.getElementById("box-5-hex"),
-  document.getElementById("box-5"),
+  [
+    new PaletteObject(
+      document.getElementById("box-1-hex"),
+      document.getElementById("box-1")
+    ),
+    new PaletteObject(
+      document.getElementById("box-2-hex"),
+      document.getElementById("box-2")
+    ),
+    new PaletteObject(
+      document.getElementById("box-3-hex"),
+      document.getElementById("box-3")
+    ),
+    new PaletteObject(
+      document.getElementById("box-4-hex"),
+      document.getElementById("box-4")
+    ),
+    new PaletteObject(
+      document.getElementById("box-5-hex"),
+      document.getElementById("box-5")
+    ),
+  ],
   new View(document.body)
 );
