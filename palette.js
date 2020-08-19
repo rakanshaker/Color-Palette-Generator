@@ -1,13 +1,16 @@
 class View {
-  constructor(body) {
+  constructor(body, input) {
     this.body = body;
+    this.input = input;
   }
-  onSubmit(cb) {
+  onKeyPress(cb) {
     this.body.onkeypress = cb;
   }
   onLoad(cb) {
     this.body.onload = cb;
-    console.log("loaded");
+  }
+  onInput(cb) {
+    this.input.onSubmit = cb;
   }
 }
 
@@ -22,14 +25,16 @@ class PaletteObject {
 }
 
 class PaletteController {
-  constructor(paletteObjectArr, submission) {
+  constructor(paletteObjectArr, keyPress, inputField) {
     this.paletteObjectArr = paletteObjectArr;
-    this.submission = submission;
-    this.submission.onSubmit(this.submit.bind(this));
-    this.submission.onLoad(this.load.bind(this));
+    this.keyPress = keyPress;
+    this.keyPress.onKeyPress(this.paletteShuffle.bind(this));
+    this.keyPress.onLoad(this.load.bind(this));
+    this.inputField = inputField;
+    this.inputField.onInput(this.input.bind(this));
   }
 
-  submit(event) {
+  paletteShuffle(event) {
     if (event.keyCode == 32) {
       for (let i in this.paletteObjectArr) {
         let hex = Color.randomColor().colorCode;
@@ -48,7 +53,24 @@ class PaletteController {
       arrItem.container.style.backgroundColor = hex;
     }
   }
+
+  //the submit event is reloading the page, triggering the onLoad method - perhaps it's a bug because of using document.body (too broad?)
+  input(event) {
+    event.preventDefault();
+    console.log(this.inputField.value);
+    for (let i in this.paletteObjectArr) {
+      const arrItem = this.paletteObjectArr[i];
+      arrItem.container.style.backgroundColor = arrItem.input.value;
+    }
+  }
 }
+
+//   setColor(){
+//     for(let i in this.paletteObjectArr){
+//      const arrItem = this.paletteObjectArr[i];
+//      arrItem.input.value =
+//     }
+// }
 
 let create = new PaletteController(
   [
@@ -88,5 +110,6 @@ let create = new PaletteController(
       document.getElementById("arrow-5")
     ),
   ],
-  new View(document.body)
+  new View(document.body, document.getElementById("box-5-hex")),
+  new View(document.body, document.getElementById("box-5-hex"))
 );
