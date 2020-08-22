@@ -27,8 +27,14 @@ class PaletteView {
       this.container.style.backgroundColor = this.input.value;
     };
   }
+  //Pass Color in to update field and background
+  static setColor() {
+    let hex = new Color(randomHex());
+    //updating field and background don't work here - I think it hasn't actually been created yet, because it's creating an array?
+    //left controler to make the changes, but it uses this method now.
+    return hex;
+  }
 }
-
 class PaletteController {
   constructor(paletteObjectArr, keyPress) {
     this.paletteObjectArr = paletteObjectArr;
@@ -36,25 +42,34 @@ class PaletteController {
     this.keyPress.onKeyPress(this.paletteShuffle.bind(this));
     this.keyPress.onLoad(this.load.bind(this));
   }
-
   paletteShuffle(event) {
     if (event.keyCode == 32) {
       for (let i in this.paletteObjectArr) {
-        let hex = Color.randomColor().colorCode;
         const arrItem = this.paletteObjectArr[i];
-        arrItem.input.value = hex;
-        arrItem.container.style.backgroundColor = hex;
+        arrItem.input.value = PaletteView.setColor().colorCode;
+        arrItem.container.style.backgroundColor = PaletteView.setColor().colorCode;
       }
       console.log("shuffle");
     }
   }
+  // paletteShuffle(event) {
+  //   if (event.keyCode == 32) {
+  //     for (let i in this.paletteObjectArr) {
+  //       let hex = Color.randomColor().colorCode;
+  //       const arrItem = this.paletteObjectArr[i];
+  //       arrItem.input.value = hex;
+  //       arrItem.container.colorCode = hex;
+  //     }
+  //     console.log("shuffle");
+  //   }
+  // }
 
   load() {
     for (let i in this.paletteObjectArr) {
-      let hex = Color.randomColor().colorCode;
+      // let hex = Color.randomColor().colorCode;
       const arrItem = this.paletteObjectArr[i];
-      arrItem.input.value = hex;
-      arrItem.container.style.backgroundColor = hex;
+      arrItem.input.value = PaletteView.setColor().colorCode;
+      arrItem.container.style.backgroundColor = PaletteView.setColor().colorCode;
     }
     console.log("load");
   }
