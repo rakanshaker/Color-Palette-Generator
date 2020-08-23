@@ -27,51 +27,34 @@ class PaletteView {
       this.container.style.backgroundColor = this.input.value;
     };
   }
-  //Pass Color in to update field and background
-  static setColor() {
-    let hex = new Color(randomHex());
-    //updating field and background don't work here - I think it hasn't actually been created yet, because it's creating an array?
-    //left controler to make the changes, but it uses this method now.
-    return hex;
+
+  setColor(hexColor) {
+    this.input.value = hexColor.colorCode;
+    this.container.style.backgroundColor = hexColor.colorCode;
   }
 }
 class PaletteController {
   constructor(paletteObjectArr, keyPress) {
     this.paletteObjectArr = paletteObjectArr;
     this.keyPress = keyPress;
-    this.keyPress.onKeyPress(this.paletteShuffle.bind(this));
+    this.keyPress.onKeyPress(this.submit.bind(this));
     this.keyPress.onLoad(this.load.bind(this));
   }
-  paletteShuffle(event) {
-    if (event.keyCode == 32) {
-      for (let i in this.paletteObjectArr) {
-        const arrItem = this.paletteObjectArr[i];
-        arrItem.input.value = PaletteView.setColor().colorCode;
-        arrItem.container.style.backgroundColor = PaletteView.setColor().colorCode;
-      }
-      console.log("shuffle");
+  paletteShuffle() {
+    for (let i in this.paletteObjectArr) {
+      const arrItem = this.paletteObjectArr[i];
+      arrItem.setColor(new Color(randomHex()));
     }
   }
-  // paletteShuffle(event) {
-  //   if (event.keyCode == 32) {
-  //     for (let i in this.paletteObjectArr) {
-  //       let hex = Color.randomColor().colorCode;
-  //       const arrItem = this.paletteObjectArr[i];
-  //       arrItem.input.value = hex;
-  //       arrItem.container.colorCode = hex;
-  //     }
-  //     console.log("shuffle");
-  //   }
-  // }
+
+  submit() {
+    if (event.keyCode == 32) {
+      this.paletteShuffle();
+    }
+  }
 
   load() {
-    for (let i in this.paletteObjectArr) {
-      // let hex = Color.randomColor().colorCode;
-      const arrItem = this.paletteObjectArr[i];
-      arrItem.input.value = PaletteView.setColor().colorCode;
-      arrItem.container.style.backgroundColor = PaletteView.setColor().colorCode;
-    }
-    console.log("load");
+    this.paletteShuffle();
   }
 }
 
