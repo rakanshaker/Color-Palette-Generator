@@ -31,6 +31,25 @@ class PaletteView {
   setColor(hexColor) {
     this.input.value = hexColor.colorCode;
     this.container.style.backgroundColor = hexColor.colorCode;
+    if (hexColor.isDark()) {
+      this.lightenIcons();
+    } else {
+      this.normalizeIcons();
+    }
+  }
+  lightenIcons() {
+    let lightColor = "rgba(255, 255, 255, 0.75)";
+    this.lockIcon.style.color = lightColor;
+    this.copyIcon.style.color = lightColor;
+    this.arrowIcon.style.color = lightColor;
+    this.input.style.color = lightColor;
+  }
+  normalizeIcons() {
+    let normalColor = "rgba(0, 0, 0)";
+    this.lockIcon.style.color = normalColor;
+    this.copyIcon.style.color = normalColor;
+    this.arrowIcon.style.color = normalColor;
+    this.input.style.color = normalColor;
   }
 }
 class PaletteController {

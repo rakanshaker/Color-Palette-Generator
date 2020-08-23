@@ -48,7 +48,7 @@ p {
 
 .box-hex-input:focus,
 .box-hex-input:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5) !important;
   border-style: none;
   outline: none;
 }
@@ -57,7 +57,7 @@ p {
   padding: 5px;
 }
 .fa-unlock:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255) !important;
 }
 
 .fa-copy {
@@ -65,7 +65,7 @@ p {
 }
 
 .fa-copy:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255) !important;
 }
 
 .fa-arrow-right {
@@ -73,5 +73,5 @@ p {
 }
 
 .fa-arrow-right:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255) !important;
 }
