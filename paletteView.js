@@ -8,6 +8,7 @@ class PaletteView {
     this.arrowIcon = arrowIcon;
     this.setupFormAction();
     this.copyToClipBoard();
+    this.arrowClick();
   }
 
   setupFormAction() {
@@ -58,5 +59,11 @@ class PaletteView {
     setTimeout(function () {
       x.className = x.className.replace("show", "");
     }, 3000);
+  }
+  arrowClick() {
+    this.arrowIcon.onclick = () => {
+      this.setColor(new Color(randomHex()));
+    };
+    console.log("arrow click");
   }
 }
