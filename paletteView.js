@@ -7,6 +7,7 @@ class PaletteView {
     this.copyIcon = copyIcon;
     this.arrowIcon = arrowIcon;
     this.setupFormAction();
+    this.copyToClipBoard();
   }
 
   setupFormAction() {
@@ -38,5 +39,24 @@ class PaletteView {
     this.copyIcon.style.color = normalColor;
     this.arrowIcon.style.color = normalColor;
     this.input.style.color = normalColor;
+  }
+
+  copyToClipBoard() {
+    this.copyIcon.onclick = () => {
+      let copyText = this.input;
+      copyText.focus();
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      this.snackBar();
+    };
+  }
+  snackBar() {
+    //from https://www.w3schools.com/howto/howto_js_snackbar.asp
+    let x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function () {
+      x.className = x.className.replace("show", "");
+    }, 3000);
   }
 }
