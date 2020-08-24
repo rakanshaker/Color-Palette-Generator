@@ -38,7 +38,7 @@ class PaletteView {
     }
   }
   lightenIcons() {
-    let lightColor = "rgba(255, 255, 255, 0.75)";
+    let lightColor = "rgba(255, 255, 255, 0.5)";
     this.lockIcon.style.color = lightColor;
     this.copyIcon.style.color = lightColor;
     this.arrowIcon.style.color = lightColor;

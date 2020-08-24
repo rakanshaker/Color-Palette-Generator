@@ -57,7 +57,7 @@ p {
   padding: 5px;
 }
 .fa-unlock:hover {
-  color: rgba(255, 255, 255) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .fa-copy {
@@ -65,7 +65,7 @@ p {
 }
 
 .fa-copy:hover {
-  color: rgba(255, 255, 255) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .fa-arrow-right {
@@ -73,5 +73,5 @@ p {
 }
 
 .fa-arrow-right:hover {
-  color: rgba(255, 255, 255) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
