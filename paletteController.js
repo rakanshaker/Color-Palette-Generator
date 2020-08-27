@@ -8,7 +8,10 @@ class PaletteController {
   paletteShuffle() {
     for (let i in this.paletteObjectArr) {
       const arrItem = this.paletteObjectArr[i];
-      arrItem.setColor(new Color(randomHex()));
+      if (arrItem.lockState === true) {
+        arrItem.setColor(new Color(randomHex()));
+      } else {
+      }
     }
   }
 
@@ -31,7 +34,8 @@ let create = new PaletteController(
       document.getElementById("box-1"),
       document.getElementById("lock-1"),
       document.getElementById("copy-1"),
-      document.getElementById("arrow-1")
+      document.getElementById("arrow-1"),
+      true
     ),
     new PaletteView(
       document.getElementById("box-2-hex"),
@@ -39,7 +43,8 @@ let create = new PaletteController(
       document.getElementById("box-2"),
       document.getElementById("lock-2"),
       document.getElementById("copy-2"),
-      document.getElementById("arrow-2")
+      document.getElementById("arrow-2"),
+      true
     ),
     new PaletteView(
       document.getElementById("box-3-hex"),
@@ -47,7 +52,8 @@ let create = new PaletteController(
       document.getElementById("box-3"),
       document.getElementById("lock-3"),
       document.getElementById("copy-3"),
-      document.getElementById("arrow-3")
+      document.getElementById("arrow-3"),
+      true
     ),
     new PaletteView(
       document.getElementById("box-4-hex"),
@@ -55,7 +61,8 @@ let create = new PaletteController(
       document.getElementById("box-4"),
       document.getElementById("lock-4"),
       document.getElementById("copy-4"),
-      document.getElementById("arrow-4")
+      document.getElementById("arrow-4"),
+      true
     ),
     new PaletteView(
       document.getElementById("box-5-hex"),
@@ -63,7 +70,8 @@ let create = new PaletteController(
       document.getElementById("box-5"),
       document.getElementById("lock-5"),
       document.getElementById("copy-5"),
-      document.getElementById("arrow-5")
+      document.getElementById("arrow-5"),
+      true
     ),
   ],
   new View(document.body)

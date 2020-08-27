@@ -1,21 +1,31 @@
 class PaletteView {
-  constructor(input, form, container, lockIcon, copyIcon, arrowIcon) {
+  constructor(
+    input,
+    form,
+    container,
+    lockIcon,
+    copyIcon,
+    arrowIcon,
+    lockState
+  ) {
     this.input = input;
     this.form = form;
     this.container = container;
     this.lockIcon = lockIcon;
     this.copyIcon = copyIcon;
     this.arrowIcon = arrowIcon;
+    this.lockState = lockState;
     this.setupFormAction();
     this.copyToClipBoard();
     this.arrowClick();
+    this.lockClick();
   }
 
   setupFormAction() {
-    this.form.onsubmit = (ev) => {
+    this.form.addEventListener("submit", (ev) => {
       ev.preventDefault();
       this.container.style.backgroundColor = this.input.value;
-    };
+    });
   }
 
   setColor(hexColor) {
@@ -61,9 +71,24 @@ class PaletteView {
     }, 3000);
   }
   arrowClick() {
-    this.arrowIcon.onclick = () => {
+    this.arrowIcon.addEventListener("click", () => {
       this.setColor(new Color(randomHex()));
+    });
+  }
+
+  lockClick() {
+    this.lockIcon.onclick = () => {
+      if (this.lockState === true) {
+        this.lockIcon.className = "fas fa-lock";
+        this.arrowIcon.style.pointerEvents = "none";
+        this.form.style.pointerEvents = "none";
+        this.lockState = false;
+      } else {
+        this.lockIcon.className = "fas fa-unlock";
+        this.arrowIcon.style.pointerEvents = "auto";
+        this.form.style.pointerEvents = "auto";
+        this.lockState = true;
+      }
     };
-    console.log("arrow click");
   }
 }

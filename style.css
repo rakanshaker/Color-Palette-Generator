@@ -52,6 +52,12 @@ p {
   border-style: none;
   outline: none;
 }
+.fa-lock {
+  padding: 5px;
+}
+.fa-lock:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
 
 .fa-unlock {
   padding: 5px;
