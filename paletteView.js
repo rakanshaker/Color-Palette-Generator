@@ -24,19 +24,25 @@ class PaletteView {
   setupFormAction() {
     this.form.addEventListener("submit", (ev) => {
       ev.preventDefault();
-      this.container.style.backgroundColor = this.input.value;
+      let inputColor = new Color(this.input.value);
+      this.container.style.backgroundColor = inputColor.colorCode;
+      this.checkDark(inputColor);
     });
   }
 
   setColor(hexColor) {
     this.input.value = hexColor.colorCode;
     this.container.style.backgroundColor = hexColor.colorCode;
-    if (hexColor.isDark()) {
+    this.checkDark(hexColor);
+  }
+  checkDark(hexInput) {
+    if (hexInput.isDark()) {
       this.lightenIcons();
     } else {
       this.normalizeIcons();
     }
   }
+
   lightenIcons() {
     let lightColor = "rgba(255, 255, 255, 0.5)";
     this.lockIcon.style.color = lightColor;

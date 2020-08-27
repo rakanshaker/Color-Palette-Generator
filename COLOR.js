@@ -17,7 +17,7 @@ class Color {
 
     let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
     console.log(luma);
-    if (luma < 40) {
+    if (luma < 55) {
       return true;
     }
 
