@@ -24,9 +24,15 @@ class PaletteView {
   setupFormAction() {
     this.form.addEventListener("submit", (ev) => {
       ev.preventDefault();
-      let inputColor = new Color(this.input.value);
-      this.container.style.backgroundColor = inputColor.colorCode;
-      this.checkDark(inputColor);
+      //check if it's a proper hex
+      if (isThisHex(this.input.value)) {
+        let inputColor = new Color(this.input.value);
+        this.container.style.backgroundColor = inputColor.colorCode;
+        this.checkDark(inputColor);
+      } else {
+        //if it's not hex, return the color of the container back to input (in hex form)
+        this.input.value = RGBToHex(this.container.style.backgroundColor);
+      }
     });
   }
 
