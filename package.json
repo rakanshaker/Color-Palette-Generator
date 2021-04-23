@@ -1,0 +1,19 @@
+{
+  "name": "color-palette-generator",
+  "version": "1.0.0",
+  "description": "Generates Color pallete",
+  "main": "COLOR.js",
+  "scripts": {
+    "deploy": "./deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakanshaker/Color-Palette-Generator.git"
+  },
+  "author": "Rakan Shaker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rakanshaker/Color-Palette-Generator/issues"
+  },
+  "homepage": "https://github.com/rakanshaker/Color-Palette-Generator#readme"
+}
